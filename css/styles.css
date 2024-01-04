@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: #5e67ba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.main-container{
+    width: 80%;
+    height: 75%;
+    background-color:#fff;
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.sep{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+/* the hanging platform */
+.main-container .hangman{
+    width: 35%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main-container .hangman img{
+    width: 80%;
+    height: 85%;
+    margin: 10px auto 10px 15%;
+    
+}
+.main-container .hangman h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-size:26px;
+    font-family:"Open sans", sans-serif;
+    letter-spacing: 1.3px;
+}
+
+/* the game  */
+.main-container .app{
+    width: 65%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: sans-serif;
+}
+.main-container  p{
+    margin: 10px auto;
+    font-size: 18px;
+    max-width: 550px;
+}
+.main-container  p #incg{
+    color: #ff0732;
+    letter-spacing: 1.3px;
+    font-size: 20px;
+}
+
+.main-container .input{
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+.main-container .input .chosen-Letter{
+    max-width: 30px;
+    height: 3px;
+    background: #000;
+    margin: auto;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+    transition: color .2s ease;
+}
+.main-container .keyboard{
+    width: fit-content;
+    height: 35%;
+    display: grid;
+    grid-template-columns: repeat(9,50px) ;
+    grid-gap: 10px;
+    margin: 20px auto;
+}
+
+.main-container .keyboard .letter{
+    height: 40px;
+    background-color: #5e67ba;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: box-shadow .2s ease;
+    animation: keyboard .3s ease;
+}
+@keyframes keyboard{
+    0%{
+        transform: scale(0);
+        pointer-events: none;
+        background-color: #5e67ba;
+    }
+    75%{
+        transform: scale(1.05);
+    }
+}
+.main-container .keyboard .letter:hover{    
+    box-shadow: 3px 3px 0px  #737fe7;
+}
+i{
+    font-size: 17px;
+    transition: transform .5s ease;
+}
+.main-container .options button:hover i{
+    transform: rotate(360deg);
+}
+
+.main-container .options{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+}
+.main-container .options button{
+    margin: 10px !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    transition: box-shadow .2s ease;
+    padding: 10px;
+    border-radius: 50%;
+}
+.main-container .options button:disabled{
+    background-color: #9fa4d6;
+    pointer-events: none;
+    transform: scale(0.95);
+}
+.main-container .options button#help{
+    width: 30%;
+    border-radius: 5px;
+}
+.main-container .options #help span#avh{
+    padding: 2px 3px;
+    background-color: #fff;
+    color: #000;
+    margin: 0 5px;
+}
+.end{
+    width: 30%;
+    position: absolute;
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fcfefc;
+    height: 60vh;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    animation: displayed 400ms ease-out;
+    text-align: center;
+    font-family: sans-serif;
+}
+@keyframes displayed {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+        filter: blur(2px);
+    }
+    75%{
+        transform: scale(1.15);
+
+    }
+}
+.end img{
+    width: 50%;
+}
+.end h2{
+    text-transform: uppercase;
+    font-family: "Open sans" ,sans-serif;
+    font-size: 25px;
+}
+.end p{
+    font-weight: 500;
+    font-size: 17px;
+}
+.end p span{
+    color: #5e67ba;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.end button ,.main-container button{
+    width: 50%;
+    height: 40px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    border:none;
+    border-radius: 10px;
+    background-color: #5e67ba;
+    color: #fff;
+}
+@media (max-width: 1124px){
+    .main-container{
+        flex-direction: column;
+        height: 95%;
+        width: 70%;
+    }
+    .main-container h1{
+        display: none;
+    }
+    .main-container .hangman{
+        width: 100%;
+        height: 50%;
+    }
+}
