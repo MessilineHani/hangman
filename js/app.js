@@ -279,7 +279,7 @@ const userinput = document.getElementById("input"),
   backgroundMusic = document.getElementById("bgmusic"),
   hangstuff = document.getElementById("hanger");
 let avh = document.getElementById("avh");
-backgroundMusic.play()
+// backgroundMusic.play();
 backgroundMusic.volume = 0.5;
 
 //// this function generates random number that selects a random word
@@ -293,11 +293,11 @@ let rdm = genrateRandom(),
     score = [];
 // keyboard
 //// creating the game interface
-GameSetUp(rdm)
+GameSetUp(rdm);
 function GameSetUp(random){
     let clickSE = document.createElement("audio");
     document.body.appendChild(clickSE);
-    clickSE.src = "../assets/else/click.wav"
+    clickSE.src = "../assets/else/click.wav";
     let soundEffet = document.createElement('audio');
     document.body.appendChild(soundEffet);
     hint.textContent = wordList[random].hint;
@@ -305,9 +305,9 @@ function GameSetUp(random){
     keyboard.innerHTML = '';
     let chosenLetters = [],
     mistakesNum = 0;
-    hangstuff.src = `../assets/images/hangman${mistakesNum}.png`
+    hangstuff.src = `../assets/images/hangman${mistakesNum}.png`;
     mistakes.textContent = mistakesNum;
-    changeWord.removeAttribute("disabled")
+    changeWord.removeAttribute("disabled");
     correctWord.forEach(field =>{
         field.textContent = wordList[rdm].word;
       });
@@ -317,7 +317,7 @@ function GameSetUp(random){
         chosenLetter.classList.add("chosen-Letter");
         userinput.appendChild(chosenLetter);
         chosenLetters.push(chosenLetter);
-        chosenLetter.style.width = `calc(100% / ${chosenLetters.length})`
+        chosenLetter.style.width = `calc(100% / ${chosenLetters.length})`;
     }
     /// this function checks if the final input is correct
     function isCorrect(){            
@@ -349,7 +349,7 @@ function GameSetUp(random){
             letter.style.transform = "scale(1)";
             letter.style.background = "#5e67ba";}, 30);
         //click sound effect
-        clickSE.play()
+        clickSE.play();
         /// pushing the clicked letter to it's feild if includes it...
           for(let i = 0; i< chosenLetters.length; i++){
               if(chosenLetters[i].textContent != ''){
@@ -371,25 +371,25 @@ function GameSetUp(random){
                             letter.style.background ="#9fa4d6";
                             letter.style.pointerEvents = "none";
                             letter.style.transform = "transform(scale(0.95))";
-                          },31)
+                          },31);
                       });
-                      isCorrect()
+                      isCorrect();
                       break;
                   }else{
-                    soundEffet.src ="../assets/else/damage.mp3"
-                    soundEffet.play()
-                    hangstuff.src = `../assets/images/hangman${mistakesNum +1}.png`
+                    soundEffet.src ="../assets/else/damage.mp3";
+                    soundEffet.play();
+                    hangstuff.src = `../assets/images/hangman${mistakesNum +1}.png`;
                     mistakesNum++;
                     mistakes.textContent = mistakesNum;
                     if(mistakesNum ==6){
-                        soundEffet.src = "../assets/else/wrong.mp3"
-                        soundEffet.play()
+                        soundEffet.src = "../assets/else/wrong.mp3";
+                        soundEffet.play();
                         sep.style.display = "block";
                         losingInterface.style.display = "flex";
                     }else if(mistakesNum >= 3){
-                        changeWord.setAttribute("disabled","")
+                        changeWord.setAttribute("disabled","");
                     }
-                    break
+                    break;
                   }
               }
           }
@@ -397,36 +397,35 @@ function GameSetUp(random){
       });
     //// handling the strike & available help chances
     if(strikeNumber /10 === Math.ceil(strikeNumber/10) && strikeNumber > 0){
-        availableHelp++
+        availableHelp++;
         avh.textContent = availableHelp;
-        console.log(availableHelp)
+        console.log(availableHelp);
     }     
     if(availableHelp > 0){
-        function helpUser(rand){
-            chosenLetters[rand].innerText = wordList[random].word[rand];
-            chosenLetters[rand].style.width = 'fit-content';
-            chosenLetters[rand].style.height = 'fit-content';
-            chosenLetters[rand].style.background = 'unset';
-            availableHelp--
-            avh.textContent = availableHelp;
-            return
-        }
-        help.removeAttribute("disabled")
-        help.firstChild.removeAttribute("class");
-        help.firstChild.setAttribute("class", "fa-solid fa-eye")
+        help.removeAttribute("disabled");
         help.addEventListener("click",function(){
             function gen(){return Math.floor(Math.random() * chosenLetters.length);}
             let randomltr =  gen();
             if(chosenLetters[randomltr].textContent != ''){
-                randomltr = gen()
-                helpUser(randomltr)
-                isCorrect()
+                randomltr = gen();
+                helpUser(randomltr);
+                isCorrect();
             }else{
                 helpUser(randomltr);
-                isCorrect()
-            }})
+                isCorrect();
+            }});
+            function helpUser(rand){
+                chosenLetters[rand].innerText = wordList[random].word[rand];
+                chosenLetters[rand].style.width = 'fit-content';
+                chosenLetters[rand].style.height = 'fit-content';
+                chosenLetters[rand].style.background = 'unset';
+                
+                availableHelp-= 1;
+                avh.textContent = availableHelp;
+                return;
+            }
     }else{
-        help.setAttribute("disabled",'')
+        help.setAttribute("disabled",'');
     }
 }
 
@@ -435,46 +434,44 @@ function GameSetUp(random){
 changeWord.addEventListener("click", function(){
     rdm = genrateRandom();
     GameSetUp(rdm);
-})
+});
 // win condition handling
 nextBtn.addEventListener("click",()=>{
-    winnerInterface.style.display = "none"
+    winnerInterface.style.display = "none";
     sep.style.display = "none";
-    wordList.splice(wordList.indexOf(wordList[rdm]),1)
+    wordList.splice(wordList.indexOf(wordList[rdm]),1);
     if(wordList.length != 0){
-        rdm = genrateRandom()
-        GameSetUp(rdm)
+        rdm = genrateRandom();
+        GameSetUp(rdm);
     }
     else{
         sep.style.display = "block";
         let end = document.createElement('div');
-        end.classList.add("end")
+        end.classList.add("end");
         end.innerHTML = ` 
         <h2>you won!</h2>
         <p>You finished the game.</p>
         <img src="../assets/images/tate-andrew.gif" alt="happy stickman" style="width:60%">
         <button type="button" id="p-again">Play again</button>
-        `
+        `;
         document.body.appendChild(end);
         end.style.display = "flex";
-        end.style.animation = "unset"
+        end.style.animation = "unset";
         const PAgainBtn = document.getElementById("p-again");
         PAgainBtn.onclick = function(){
-            wordList = [...backup]
-            rdm = genrateRandom()
-            GameSetUp(rdm)
-            end.style.display = "none"
-            sep.style.display  = "none"
+            wordList = [...backup];
+            rdm = genrateRandom();
+            GameSetUp(rdm);
+            end.style.display = "none";
+            sep.style.display  = "none";
         }
     }
 })
 // lose condition handling
 TryAgainBtn.addEventListener("click",()=>{
-    // score.push(strike)
-    // localStorage.setItem("score", JSON.stringify(score))
     strikeNumber = 1;
-    wordList = [...backup]
-    losingInterface.style.display = "none"
-    sep.style.display = "none"
-    GameSetUp(rdm)
+    wordList = [...backup];
+    losingInterface.style.display = "none";
+    sep.style.display = "none";
+    GameSetUp(rdm);
 })
