@@ -376,6 +376,13 @@ function GameSetUp(random){
                       isCorrect();
                       break;
                   }else{
+                    window.scrollTo({
+                        top : 0,
+                        left :0,
+                        behavior : "smooth"
+
+                    })
+
                     soundEffet.src ="../assets/else/damage.mp3";
                     soundEffet.play();
                     hangstuff.src = `../assets/images/hangman${mistakesNum +1}.png`;
@@ -386,6 +393,11 @@ function GameSetUp(random){
                         soundEffet.play();
                         sep.style.display = "block";
                         losingInterface.style.display = "flex";
+                        window.scrollTo({
+                            top: window.innerHeight /2,
+                            left : 0,
+                            behavior :"smooth"
+                        })
                     }else if(mistakesNum >= 3){
                         changeWord.setAttribute("disabled","");
                     }
