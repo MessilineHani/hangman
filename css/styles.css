@@ -153,7 +153,7 @@ i{
     width: fit-content !important;
     height: fit-content !important;
     background-color: #ffd930 !important;
-    transition: box-shadow .2s ease;
+    transition: all  .2s ease;
     padding: 10px;
     border-radius: 50%;
 }
@@ -173,7 +173,7 @@ i{
     margin: 0 5px;
 }
 .main-container .options button:hover{
-    background-color: #ffe985;
+    background-color: #e4c53d !important;
 }
 
 .end{
@@ -233,6 +233,10 @@ i{
     color: #fff;
 }
 @media (max-width: 1124px){
+    .main-container .keyboard .letter:hover,.main-container .options button:hover,.main-container .options button:first-child:hover i{    
+        box-shadow: unset;
+        animation: unset;
+    }
     body{
         height: 130vh;
     }
