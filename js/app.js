@@ -344,10 +344,10 @@ function GameSetUp(random){
         letter.addEventListener("click", () => {
         /// the click animtion
           letter.style.transform = "scale(0.8)";
-          letter.style.background = "#394081";
+          letter.style.background = "#ffd930";
           setTimeout(() => {
             letter.style.transform = "scale(1)";
-            letter.style.background = "#5e67ba";}, 30);
+            letter.style.background = "#fc6e14  ";}, 30);
         //click sound effect
         clickSE.play();
         /// pushing the clicked letter to it's feild if includes it...
@@ -368,7 +368,7 @@ function GameSetUp(random){
                           chosenLetters[index].style.height = 'fit-content';
                           chosenLetters[index].style.background = 'unset';
                           setTimeout(()=>{
-                            letter.style.background ="#9fa4d6";
+                            letter.style.background ="#fce892";
                             letter.style.pointerEvents = "none";
                             letter.style.transform = "transform(scale(0.95))";
                           },31);
@@ -396,37 +396,35 @@ function GameSetUp(random){
         });
       });
     //// handling the strike & available help chances
-    if(strikeNumber /10 === Math.ceil(strikeNumber/10) && strikeNumber > 0){
-        availableHelp++;
-        avh.textContent = availableHelp;
-        console.log(availableHelp);
-    }     
-    if(availableHelp > 0){
-        help.removeAttribute("disabled");
-        help.addEventListener("click",function(){
-            function gen(){return Math.floor(Math.random() * chosenLetters.length);}
-            let randomltr =  gen();
-            if(chosenLetters[randomltr].textContent != ''){
-                randomltr = gen();
-                helpUser(randomltr);
-                isCorrect();
-            }else{
-                helpUser(randomltr);
-                isCorrect();
-            }});
-            function helpUser(rand){
-                chosenLetters[rand].innerText = wordList[random].word[rand];
-                chosenLetters[rand].style.width = 'fit-content';
-                chosenLetters[rand].style.height = 'fit-content';
-                chosenLetters[rand].style.background = 'unset';
-                
-                availableHelp-= 1;
-                avh.textContent = availableHelp;
-                return;
-            }
-    }else{
-        help.setAttribute("disabled",'');
-    }
+    // if(strikeNumber /10 === Math.ceil(strikeNumber/10) && strikeNumber > 0){
+    //     availableHelp++;
+    //     avh.textContent = availableHelp;
+    //     if(availableHelp > 0){
+    //         help.removeAttribute("disabled");
+    //         help.addEventListener("click",function(){
+    //             function gen(){return Math.floor(Math.random() * chosenLetters.length);}
+    //             let randomltr =  gen();
+    //             if(chosenLetters[randomltr].textContent != ''){
+    //                 randomltr = gen();
+    //                 helpUser(randomltr);
+    //                 isCorrect();
+    //             }else{
+    //                 helpUser(randomltr);
+    //                 isCorrect();
+    //             }});
+    //             function helpUser(rand){
+    //                 chosenLetters[rand].innerText = wordList[random].word[rand];
+    //                 chosenLetters[rand].style.width = 'fit-content';
+    //                 chosenLetters[rand].style.height = 'fit-content';
+    //                 chosenLetters[rand].style.background = 'unset';
+    //                 availableHelp-= 1;
+    //                 avh.textContent = availableHelp;
+    //                 if(availableHelp ===0){avh.setAttribute("disabled", '')}
+    //                 return;
+    //             }
+    //     }
+    // }     
+
 }
 
 ///// win & lose & change handling

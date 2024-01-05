@@ -7,7 +7,7 @@
 body{
     height: 100vh;
     width: 100%;
-    background-color: #5e67ba;
+    background-color: #fee163;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +73,7 @@ body{
     max-width: 550px;
 }
 .main-container  p #incg{
-    color: #ff0732;
+    color: #ff052f;
     letter-spacing: 1.3px;
     font-size: 20px;
 }
@@ -107,7 +107,7 @@ body{
 
 .main-container .keyboard .letter{
     height: 40px;
-    background-color: #5e67ba;
+    background-color: #fc6e14;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -130,13 +130,14 @@ body{
     }
 }
 .main-container .keyboard .letter:hover{    
-    box-shadow: 3px 3px 0px  #737fe7;
+    box-shadow: 3px 3px 0px  #fee163;
 }
 i{
     font-size: 17px;
     transition: transform .5s ease;
 }
-.main-container .options button:hover i{
+
+.main-container .options button:first-child:hover i{
     transform: rotate(360deg);
 }
 
@@ -151,12 +152,13 @@ i{
     margin: 10px !important;
     width: fit-content !important;
     height: fit-content !important;
+    background-color: #ffd930 !important;
     transition: box-shadow .2s ease;
     padding: 10px;
     border-radius: 50%;
 }
 .main-container .options button:disabled{
-    background-color: #9fa4d6;
+    background-color: #fce892 !important;
     pointer-events: none;
     transform: scale(0.95);
 }
@@ -170,6 +172,10 @@ i{
     color: #000;
     margin: 0 5px;
 }
+.main-container .options button:hover{
+    background-color: #ffe985;
+}
+
 .end{
     width: 30%;
     position: absolute;
@@ -210,7 +216,7 @@ i{
     font-size: 17px;
 }
 .end p span{
-    color: #5e67ba;
+    color: #ff052f;
     text-transform: uppercase;
     font-weight: 700;
 }
@@ -223,10 +229,13 @@ i{
     cursor: pointer;
     border:none;
     border-radius: 10px;
-    background-color: #5e67ba;
+    background-color: #ff4f23;
     color: #fff;
 }
 @media (max-width: 1124px){
+    body{
+        height: 130vh;
+    }
     .main-container{
         flex-direction: column;
         height: 95%;
@@ -236,7 +245,79 @@ i{
         display: none;
     }
     .main-container .hangman{
-        width: 100%;
+        width: fit-content;
         height: 50%;
+    }
+    .main-container .app{
+        width:100%;
+        height: 50%;
+
+    }
+    .main-container .app .keyboard{
+        grid-template-columns: repeat(9,45px) ;
+        grid-gap: 10px;  
+    }
+    .main-container .app .keyboard .letter{
+        font-size: 16px;
+        height: 35px;
+        margin: 0;
+    }
+    @media (max-width: 796px){
+        body{
+            height: 150vh;
+        }
+        .main-container{
+            width: 90%;
+        }
+        .end{
+            width: 65%;
+            height: 50%;
+        }
+        @media (max-width: 620px){
+            body{
+                height: 170vh;
+            }
+            .main-container .hangman{
+                height: 40%;
+            }
+            .main-container .app{
+                height: 60%;
+            }
+            .main-container .app .keyboard{
+                height: fit-content;
+                grid-template-columns: repeat(8,40px) ;
+                
+            }
+            .main-container .app .keyboard .letter{
+                height: 35px;
+            }
+            @media (max-width: 504px){
+                .main-container{
+                    width: 95%;
+                }
+                .main-container .app .input{
+                    width: 100%;
+                }
+                .main-container .app .input .chosen-Letter{
+                    max-width: 20px;
+                }
+                .main-container .app .keyboard{
+                    grid-template-columns: repeat(6,40px) ;
+                }
+                .end{
+                    width: 80%;
+                    height: 40%;
+                }
+
+                @media (max-width: 374px){
+                    body{
+                        height: 200vh;
+                    }
+                    .main-container .app .keyboard{
+                        grid-template-columns: repeat(5,40px) ;
+                    }
+                }
+            }
+        }
     }
 }
