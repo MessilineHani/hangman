@@ -379,7 +379,7 @@ function GameSetUp(random){
                     window.scrollTo({
                         top : 0,
                         left :0,
-                        behavior : "smooth"
+                        behavior : "instant"
 
                     })
 
@@ -393,11 +393,6 @@ function GameSetUp(random){
                         soundEffet.play();
                         sep.style.display = "block";
                         losingInterface.style.display = "flex";
-                        window.scrollTo({
-                            top: window.innerHeight /2,
-                            left : 0,
-                            behavior :"smooth"
-                        })
                     }else if(mistakesNum >= 3){
                         changeWord.setAttribute("disabled","");
                     }
