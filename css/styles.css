@@ -242,7 +242,8 @@ i{
     }
     .main-container{
         flex-direction: column;
-        height: 95%;
+        justify-content:space-evenly;
+        height: 90%;
         width: 70%;
     }
     .main-container h1{
@@ -266,12 +267,24 @@ i{
         height: 35px;
         margin: 0;
     }
+
     @media (max-width: 796px){
         body{
-            height: 150vh;
+            height: 120vh;
         }
         .main-container{
             width: 90%;
+        }
+        .main-container p{
+            margin: 10px auto;
+        }
+        .main-container .hangman img{
+            width: 100%;
+            height: 80%;
+            margin: 0 auto 5px 20%;   
+        }
+        .main-container .input .chosen-Letter{
+            margin: 5px auto;
         }
         .end{
             width: 65%;
@@ -279,7 +292,7 @@ i{
         }
         @media (max-width: 620px){
             body{
-                height: 170vh;
+                height: 120vh;
             }
             .main-container .hangman{
                 height: 40%;
@@ -294,6 +307,9 @@ i{
             }
             .main-container .app .keyboard .letter{
                 height: 35px;
+            }
+            .main-container .options button{
+                margin: 5px auto;
             }
             @media (max-width: 504px){
                 .main-container{
@@ -315,7 +331,7 @@ i{
 
                 @media (max-width: 374px){
                     body{
-                        height: 200vh;
+                        height: 150vh;
                     }
                     .main-container .app .keyboard{
                         grid-template-columns: repeat(5,40px) ;
