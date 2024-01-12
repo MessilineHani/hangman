@@ -312,8 +312,12 @@ i{
                 margin: 5px auto;
             }
             @media (max-width: 504px){
+                body{
+                    height: fit-content;
+                }
                 .main-container{
                     width: 95%;
+                    height: fit-content;
                 }
                 .main-container .app .input{
                     width: 100%;

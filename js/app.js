@@ -288,9 +288,9 @@ function genrateRandom(){
     return rd;
 }
 let rdm = genrateRandom(),
-    availableHelp = 0,
+    availableHelp = 1,
     strikeNumber = 0,
-    score = [];
+    score = []; 
 // keyboard
 //// creating the game interface
 GameSetUp(rdm);
@@ -401,38 +401,33 @@ function GameSetUp(random){
               }
           }
         });
-      });
-    //// handling the strike & available help chances
-    // if(strikeNumber /10 === Math.ceil(strikeNumber/10) && strikeNumber > 0){
-    //     availableHelp++;
-    //     avh.textContent = availableHelp;
-    //     if(availableHelp > 0){
-    //         help.removeAttribute("disabled");
-    //         help.addEventListener("click",function(){
-    //             function gen(){return Math.floor(Math.random() * chosenLetters.length);}
-    //             let randomltr =  gen();
-    //             if(chosenLetters[randomltr].textContent != ''){
-    //                 randomltr = gen();
-    //                 helpUser(randomltr);
-    //                 isCorrect();
-    //             }else{
-    //                 helpUser(randomltr);
-    //                 isCorrect();
-    //             }});
-    //             function helpUser(rand){
-    //                 chosenLetters[rand].innerText = wordList[random].word[rand];
-    //                 chosenLetters[rand].style.width = 'fit-content';
-    //                 chosenLetters[rand].style.height = 'fit-content';
-    //                 chosenLetters[rand].style.background = 'unset';
-    //                 availableHelp-= 1;
-    //                 avh.textContent = availableHelp;
-    //                 if(availableHelp ===0){avh.setAttribute("disabled", '')}
-    //                 return;
-    //             }
-    //     }
-    // }     
-
+      });   
+          // handling the strike & available help chances   
+          const helpUser = function(){
+            let empty = chosenLetters.reduce((empty,filled)=>{return empty.innerText ==''? empty:filled})
+                empty.innerText = wordList[random].word[chosenLetters.indexOf(empty)];
+                empty.style.width = "fit-content";
+                empty.style.height = "fit-content";
+                empty.style.background = "unset";
+                avh.innerText  = availableHelp;
+                if(availableHelp == 0 ){
+                    help.setAttribute("disabled", '');
+                }
+                isCorrect()
+          }
+          if(strikeNumber / 10 == Math.ceil(strikeNumber /10) && strikeNumber > 0){
+            availableHelp++
+            avh.innerText  = availableHelp;
+          }
+          if(availableHelp > 0) {
+                help.removeAttribute("disabled");
+                help.addEventListener("click", helpUser,availableHelp--)
+          }
 }
+
+
+
+
 
 ///// win & lose & change handling
 // change the word
