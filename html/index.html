@@ -17,6 +17,10 @@
             <h1>hangman game</h1>
         </div>
         <div class="app" id="app">
+            <div class="status">
+                <div class="streak statu" title="Streak"><i class="fa-solid fa-fire" style="color: #ff052f;"></i><span data-streak>0</span></div>
+                <div class="high-score statu" title="High score"><i class="fa-solid fa-crown" style="color: #FFD43B;"></i><span data-high-score>0</span></div>
+            </div>
             <div class="input" id="input">
             </div>
             <p class="hint">Hint: <span id="hint">Lorem ipsum dolor sit amet.</span></p>
@@ -33,7 +37,7 @@
     <h2>Congrats!</h2>
     <img src="../assets/images/won.gif" alt="happy stickman">
     <p>You found the word: <span class="correct-word"></span></p>
-    <p>Your current streak: <span id="strike"></span></p>
+    <p>Your current streak: <span data-streak></span></p>
     <button type="button" id="next-word">Next word</button>
 </div>
 <div class="loser end" id="losing-interface">
