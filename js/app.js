@@ -38,7 +38,7 @@ let rdm = genrateRandom(),
 // keyboard
 //// creating the game interface
 GameSetUp(rdm);
-function GameSetUp(random){
+function GameSetUp(random, tmr){
     
     const clickSE = document.createElement("audio");
     document.body.appendChild(clickSE);
@@ -50,7 +50,7 @@ function GameSetUp(random){
     keyboard.innerHTML = '';
     let chosenLetters = [],
     mistakesNum = 0;
-    t = 20;
+    t = tmr;
     hangstuff.src = `../assets/images/hangman${mistakesNum}.png`;
     mistakes.textContent = mistakesNum;
     changeWord.removeAttribute("disabled");
@@ -247,5 +247,6 @@ TryAgainBtn.addEventListener("click",()=>{
     losingInterface.style.display = "none";
     sep.style.display = "none";
     rdm  = genrateRandom()
-    GameSetUp(rdm);
+    GameSetUp(rdm, 20);
 })
+
